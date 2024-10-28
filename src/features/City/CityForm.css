@@ -1,0 +1,19 @@
+.city-form {
+  min-height: calc(100vh - 200px); /* Ajusta el valor según la altura de tu header y footer */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.city-form select,
+.city-form input {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.city-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
