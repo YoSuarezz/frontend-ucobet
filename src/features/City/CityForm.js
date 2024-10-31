@@ -1,5 +1,50 @@
 import React, { useState, useEffect } from 'react';
 
+// Función para obtener estados
+const getStates = async () => {
+  try {
+    const response = await fetch('https://localhost:8080/general/api/v1/states', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al obtener estados');
+    }
+    
+    const states = await response.json();
+    return states;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
+// Función para crear ciudad
+const createCity = async (cityData) => {
+  try {
+    const response = await fetch('http://localhost:8080/general/api/v1/cities/crearciudad', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(cityData)
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al crear la ciudad');
+    }
+
+    const newCity = await response.json();
+    return newCity;
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+};
+
 const CityForm = () => {
   const [cityName, setCityName] = useState('');
   const [department, setDepartment] = useState('');
